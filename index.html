@@ -2,594 +2,451 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#0D1B3E">
 <title>Kananda Kids | Moda Infantil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
+  --orange:     #FF7A2F;
+  --yellow:     #FFD234;
+  --pink:       #FF5BA3;
+  --green:      #3DDB85;
+  --blue-light: #5BC8FF;
+  --purple:     #A855F7;
   --bg-deep:    #0D1B3E;
-  --bg-mid:     #142350;
-  --bg-sky:     #1A3268;
-  - - laranja : # FF7A2F ;​​
-  - - amarelo : # FFD234 ;​​
-  - - rosa : # FF5BA3 ;
-  - - verde : # 3DDB85 ;​
-  - - luz azul : # 5BC8FF ;​​​​​
-  - - roxo : # A855F7 ;​​
-  - - branco : #FFFFFF ;​​
-  - - creme : # FFF8F0 ;​
+  --white:      #FFFFFF;
+
+  --fs-xs:   clamp(10px, 2.5vw, 12px);
+  --fs-sm:   clamp(12px, 3vw,   14px);
+  --fs-base: clamp(13px, 3.5vw, 15px);
+  --fs-md:   clamp(15px, 4vw,   17px);
+  --fs-lg:   clamp(19px, 5.5vw, 24px);
+  --fs-xl:   clamp(26px, 7vw,   36px);
+
+  --sp-xs: clamp(6px,  1.5vw, 10px);
+  --sp-sm: clamp(10px, 2.5vw, 16px);
+  --sp-md: clamp(14px, 3.5vw, 22px);
+  --sp-lg: clamp(20px, 5vw,   32px);
+
+  --r-sm: clamp(12px, 3vw, 16px);
+  --r-md: clamp(16px, 4vw, 20px);
+  --r-lg: clamp(18px, 5vw, 24px);
+
+  --logo-size: clamp(82px, 22vw, 110px);
 }
 
-h t m l { s r o l l - b e h a v i o r : suave; }  
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
-corpo {​​​ 
-  f o n t - f a m i l y : 'Nunito', sans-serif;
-  fundo : var ( -- bg - deep ) ;​
-  altura mínima : 100vh ;​​​​​​
-  o transbordamento - x : oculto ;​​​​
-  cor : var( -- branco ) ;
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg-deep);
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--white);
+  -webkit-font-smoothing: antialiased;
 }
 
-/ *  ===== FUNDO CELESTIAL ===== */
-. céu {​​ 
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  background: linear-gradient(180deg,
-    #060D24 0%,
-    #0D1B3E 30%,
-    #142350 60%,
-    #1E3A70 100%
-  );
+/* SKY */
+.sky {
+  position: fixed; inset: 0; z-index: 0;
+  background: linear-gradient(180deg, #060D24 0%, #0D1B3E 30%, #142350 60%, #1E3A70 100%);
   overflow: hidden;
 }
-
-/* Stars */
 .star-field { position: absolute; inset: 0; }
 .s {
-  position: absolute;
-  border-radius: 50%;
-  background: white;
-  animation: twinkle var(--d, 3s) var(--delay, 0s) infinite alternate ease-in-out;
+  position: absolute; border-radius: 50%; background: #fff;
+  animation: twinkle var(--d,3s) var(--delay,0s) infinite alternate ease-in-out;
 }
 @keyframes twinkle {
-  from { opacity: var(--lo, 0.2); transform: scale(1); }
-  to   { opacity: var(--hi, 1);   transform: scale(var(--sc, 1.5)); }
+  from { opacity: var(--lo,.2); transform: scale(1); }
+  to   { opacity: var(--hi,1);  transform: scale(var(--sc,1.5)); }
 }
-
-/* Shooting star */
 .shoot {
-  position: absolute;
-  width: 120px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, white, transparent);
-  border-radius: 2px;
+  position: absolute; height: 2px; border-radius: 2px; opacity: 0;
+  width: clamp(70px,15vw,120px);
+  background: linear-gradient(90deg, transparent, #fff, transparent);
   animation: shoot 6s 2s infinite linear;
-  top: 15%;
-  left: -120px;
-  transform: rotate(-20deg);
-  opacity: 0;
+  top: 12%; left: -130px; transform: rotate(-20deg);
 }
 .shoot2 {
-  position: absolute;
-  width: 80px;
-  height: 1.5px;
-  background: linear-gradient(90deg, transparent, #FFD234, transparent);
-  border-radius: 2px;
+  position: absolute; height: 1.5px; border-radius: 2px; opacity: 0;
+  width: clamp(50px,10vw,80px);
+  background: linear-gradient(90deg, transparent, var(--yellow), transparent);
   animation: shoot 9s 5s infinite linear;
-  top: 30%;
-  left: -80px;
-  transform: rotate(-15deg);
-  opacity: 0;
+  top: 28%; left: -90px; transform: rotate(-15deg);
 }
 @keyframes shoot {
-  0%   { left: -150px; opacity: 0; }
-  5%   { opacity: 1; }
-  95%  { opacity: 1; }
-  100% { left: 110%; opacity: 0; }
+  0%   { left:-150px; opacity:0; }
+  5%   { opacity:1; }
+  95%  { opacity:1; }
+  100% { left:110%; opacity:0; }
 }
-
-/* Clouds */
-.cloud-layer { position: absolute; bottom: 0; width: 200%; height: 280px; }
+.cloud-layer {
+  position: absolute; bottom: 0; width: 200%;
+  height: clamp(120px, 28vw, 260px);
+}
 .cloud-layer.front { animation: driftClouds 60s linear infinite; }
-.cloud-layer.back  { animation: driftClouds 90s 30s linear infinite; opacity: 0.5; }
-
+.cloud-layer.back  { animation: driftClouds 90s 30s linear infinite; opacity: .5; }
 @keyframes driftClouds {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
 
-.cloud-svg { position: absolute; bottom: 0; }
-
-/* ===== LAYOUT ===== */
+/* LAYOUT */
 .container {
-  position: relative;
-  z-index: 10;
-  max-width: 460px;
-  margin: 0 auto;
-  padding: 44px 18px 80px;
+  position: relative; z-index: 10;
+  width: 100%; max-width: 520px; margin: 0 auto;
+  padding: var(--sp-lg) clamp(14px,4vw,24px) clamp(70px,18vw,90px);
 }
 
-/* ===== LOGO SECTION ===== */
+/* LOGO */
 .logo-section {
-  text-align: center;
-  margin-bottom: 28px;
+  text-align: center; margin-bottom: var(--sp-md);
   animation: popIn 0.7s cubic-bezier(.34,1.56,.64,1) both;
 }
-
 @keyframes popIn {
-  from { opacity: 0; transform: scale(0.7) translateY(20px); }
-  to   { opacity: 1; transform: scale(1) translateY(0); }
+  from { opacity:0; transform:scale(0.7) translateY(20px); }
+  to   { opacity:1; transform:scale(1) translateY(0); }
 }
-
-.logo-ring {
-  display: inline-block;
-  position: relative;
-  margin-bottom: 14px;
-}
-
+.logo-ring { display: inline-block; position: relative; margin-bottom: var(--sp-sm); }
 .logo-ring::before {
-  content: '';
-  position: absolute;
-  inset: -5px;
-  border-radius: 50%;
-  background: conic-gradient(
-    var(--orange), var(--yellow), var(--green),
-    var(--blue-light), var(--pink), var(--purple), var(--orange)
-  );
+  content:''; position:absolute; inset:-5px; border-radius:50%;
+  background: conic-gradient(var(--orange),var(--yellow),var(--green),var(--blue-light),var(--pink),var(--purple),var(--orange));
   animation: spinRing 5s linear infinite;
-  border-radius: 50%;
 }
-
-@keyframes spinRing {
-  to { transform: rotate(360deg); }
-}
-
+@keyframes spinRing { to { transform:rotate(360deg); } }
 .logo-inner {
-  position: relative;
-  z-index: 1;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: var(--bg-deep);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 3px solid var(--bg-deep);
+  position:relative; z-index:1;
+  width:var(--logo-size); height:var(--logo-size);
+  border-radius:50%; background:var(--bg-deep);
+  display:flex; align-items:center; justify-content:center;
+  border:3px solid var(--bg-deep);
 }
-
-/* SVG Logo inside */
 .logo-svg-wrap {
-  width: 78px;
-  height: 78px;
+  width: calc(var(--logo-size) * 0.78);
+  height: calc(var(--logo-size) * 0.78);
 }
-
 .brand-title {
-  font-family: 'Baloo 2', cursive;
-  font-size: 32px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  line-height: 1;
-  margin-bottom: 4px;
+  font-family:'Baloo 2',cursive; font-size:var(--fs-xl);
+  font-weight:800; letter-spacing:-0.5px; line-height:1.1; margin-bottom:4px;
 }
-.brand-title .k1 { color: var(--orange); }
-.brand-title .k2 { color: var(--yellow); }
-.brand-title .k3 { color: var(--green); }
-.brand-title .k4 { color: var(--blue-light); }
-.brand-title .k5 { color: var(--pink); }
-.brand-title .k6 { color: var(--white); }
-.brand-title .k7 { color: var(--yellow); }
-.brand-title .k8 { color: var(--orange); }
-.brand-title .k9 { color: var(--green); }
-.brand-title .k10{ color: var(--blue-light); }
-.brand-title .k11{ color: var(--pink); }
-
-.tagline {
-  font-size: 13.5px;
-  color: rgba(255,255,255,0.7);
-  font-weight: 600;
-  letter-spacing: 0.3px;
-}
-
+.k1  { color:var(--orange); }  .k2  { color:var(--yellow); }
+.k3  { color:var(--green); }   .k4  { color:var(--blue-light); }
+.k5  { color:var(--pink); }    .k6  { color:var(--white); }
+.k7  { color:var(--yellow); }  .k8  { color:var(--orange); }
+.k9  { color:var(--green); }   .k10 { color:var(--blue-light); }
+.tagline { font-size:var(--fs-sm); color:rgba(255,255,255,.7); font-weight:600; }
 .badges-row {
-  display: flex;
-  gap: 7px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 12px;
+  display:flex; gap:var(--sp-xs); justify-content:center;
+  flex-wrap:wrap; margin-top:var(--sp-xs);
 }
 .badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 5px 13px;
-  border-radius: 100px;
-  font-size: 11.5px;
-  font-weight: 700;
-  border: 1.5px solid rgba(255,255,255,0.15);
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(8px);
-  color: white;
+  display:inline-flex; align-items:center; gap:5px;
+  padding:5px clamp(10px,3vw,14px); border-radius:100px;
+  font-size:var(--fs-xs); font-weight:700;
+  border:1.5px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.08); backdrop-filter:blur(8px);
+  white-space:nowrap;
 }
-.badge .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
-.b-orange .dot { background: var(--orange); }
-.b-green .dot  { background: var(--green); }
-.b-blue .dot   { background: var(--blue-light); }
+.badge .dot { width:7px; height:7px; border-radius:50%; display:inline-block; flex-shrink:0; }
+.b-orange .dot { background:var(--orange); }
+.b-green .dot  { background:var(--green); }
+.b-blue .dot   { background:var(--blue-light); }
 
-/* ===== STATS ===== */
+/* STATS */
 .stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 26px;
-  animation: fadeUp 0.6s 0.15s ease both;
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:var(--sp-xs); margin-bottom:var(--sp-md);
+  animation:fadeUp 0.6s 0.15s ease both;
 }
 .stat {
-  background: rgba(255,255,255,0.07);
-  border: 1.5px solid rgba(255,255,255,0.12);
-  border-radius: 18px;
-  padding: 14px 8px;
-  text-align: center;
-  backdrop-filter: blur(6px);
+  background:rgba(255,255,255,.07); border:1.5px solid rgba(255,255,255,.12);
+  border-radius:var(--r-sm); padding:clamp(10px,3vw,16px) 6px;
+  text-align:center; backdrop-filter:blur(6px);
 }
 .stat-num {
-  font-family: 'Baloo 2', cursive;
-  font-size: 22px;
-  font-weight: 800;
-  display: block;
-  line-height: 1;
-  margin-bottom: 3px;
+  font-family:'Baloo 2',cursive; font-size:var(--fs-lg);
+  font-weight:800; display:block; line-height:1; margin-bottom:2px;
 }
-.stat-num.col-or { color: var(--orange); }
-.stat-num.col-ye { color: var(--yellow); }
-.stat-num.col-gr { color: var(--green); }
-.stat-lbl { font-size: 11px; color: rgba(255,255,255,0.6); font-weight: 600; }
+.col-or { color:var(--orange); } .col-ye { color:var(--yellow); } .col-gr { color:var(--green); }
+.stat-lbl { font-size:var(--fs-xs); color:rgba(255,255,255,.6); font-weight:600; }
 
-/* ===== PRIMARY BUTTON ===== */
+/* CTA MAIN */
 .cta-main {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 22px;
-  border-radius: 22px;
-  text-decoration: none;
-  margin-bottom: 12px;
-  transition: transform 0.2s, box-shadow 0.2s;
-  animation: fadeUp 0.6s 0.2s ease both;
-  position: relative;
-  overflow: hidden;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:clamp(14px,4vw,20px) clamp(16px,4.5vw,24px);
+  border-radius:var(--r-lg); text-decoration:none;
+  margin-bottom:var(--sp-xs); min-height:64px;
+  transition:transform .2s, box-shadow .2s;
+  animation:fadeUp 0.6s 0.2s ease both;
+  position:relative; overflow:hidden;
 }
 .cta-main::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, var(--orange), #FF4D9A);
-  z-index: 0;
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg,var(--orange),#FF4D9A); z-index:0;
 }
-.cta-main:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 14px 40px rgba(255,122,47,0.45); }
-.cta-main > * { position: relative; z-index: 1; }
+@media (hover:hover) {
+  .cta-main:hover { transform:translateY(-3px) scale(1.01); box-shadow:0 14px 40px rgba(255,122,47,.45); }
+}
+.cta-main > * { position:relative; z-index:1; }
 .cta-icon-wrap {
-  width: 48px; height: 48px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.2);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 24px;
+  width:clamp(40px,11vw,52px); height:clamp(40px,11vw,52px);
+  border-radius:clamp(10px,3vw,14px); background:rgba(255,255,255,.2);
+  display:flex; align-items:center; justify-content:center;
+  font-size:clamp(20px,5.5vw,26px); flex-shrink:0;
 }
-.cta-text { flex: 1; padding: 0 14px; }
-.cta-sub  { font-size: 11px; opacity: 0.85; font-weight: 600; display: block; margin-bottom: 2px; }
-.cta-name { font-size: 17px; font-weight: 800; color: white; }
+.cta-text { flex:1; padding:0 clamp(10px,3vw,16px); min-width:0; }
+.cta-sub  { font-size:var(--fs-xs); opacity:.85; font-weight:600; display:block; margin-bottom:2px; }
+.cta-name {
+  font-size:var(--fs-md); font-weight:800; color:white;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
 .cta-arrow {
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.25);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px;
+  width:clamp(28px,8vw,38px); height:clamp(28px,8vw,38px);
+  border-radius:50%; background:rgba(255,255,255,.25);
+  display:flex; align-items:center; justify-content:center;
+  font-size:clamp(13px,4vw,18px); flex-shrink:0;
 }
 
-/* ===== LINK CARDS ===== */
+/* SECTION LABEL */
 .section-label {
-  font-size: 10.5px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
-  margin: 22px 0 10px 4px;
+  font-size:var(--fs-xs); font-weight:800; letter-spacing:2px;
+  text-transform:uppercase; color:rgba(255,255,255,.45);
+  margin:var(--sp-md) 0 var(--sp-xs) 4px;
 }
 
+/* LINK CARDS */
 .link-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 18px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.07);
-  border: 1.5px solid rgba(255,255,255,0.1);
-  text-decoration: none;
-  color: white;
-  margin-bottom: 10px;
-  transition: transform 0.2s, background 0.2s, border-color 0.2s;
-  backdrop-filter: blur(8px);
-  animation: fadeUp 0.5s ease both;
-  cursor: pointer;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:clamp(12px,3.5vw,17px) clamp(14px,4vw,20px);
+  border-radius:var(--r-md);
+  background:rgba(255,255,255,.07); border:1.5px solid rgba(255,255,255,.1);
+  text-decoration:none; color:white; margin-bottom:var(--sp-xs);
+  transition:transform .2s, background .2s; backdrop-filter:blur(8px);
+  min-height:60px; opacity:0;
 }
-.link-card:hover {
-  transform: translateY(-2px) scale(1.01);
-  background: rgba(255,255,255,0.12);
-  border-color: rgba(255,255,255,0.22);
+@media (hover:hover) {
+  .link-card:hover { transform:translateY(-2px) scale(1.01); background:rgba(255,255,255,.12); }
 }
-.lc-left { display: flex; align-items: center; gap: 14px; }
+.lc-left { display:flex; align-items:center; gap:clamp(10px,3vw,15px); min-width:0; }
 .lc-icon {
-  width: 46px; height: 46px;
-  border-radius: 14px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 22px;
-  flex-shrink: 0;
+  width:clamp(40px,11vw,48px); height:clamp(40px,11vw,48px);
+  border-radius:clamp(10px,3vw,14px);
+  display:flex; align-items:center; justify-content:center;
+  font-size:clamp(18px,5vw,24px); flex-shrink:0;
 }
-.ic-or { background: rgba(255,122,47,0.2); }
-.ic-pi { background: rgba(255,91,163,0.2); }
-.ic-bl { background: rgba(91,200,255,0.2); }
-.ic-ye { background: rgba(255,210,52,0.2); }
-.ic-gr { background: rgba(61,219,133,0.2); }
-.ic-pu { background: rgba(168,85,247,0.2); }
+.ic-or { background:rgba(255,122,47,.2); }  .ic-pi { background:rgba(255,91,163,.2); }
+.ic-bl { background:rgba(91,200,255,.2); }  .ic-ye { background:rgba(255,210,52,.2); }
+.ic-gr { background:rgba(61,219,133,.2); }
+.lc-sub  { font-size:var(--fs-xs); color:rgba(255,255,255,.5); font-weight:600; display:block; margin-bottom:2px; }
+.lc-name { font-size:var(--fs-base); font-weight:800; }
+.lc-chev { color:rgba(255,255,255,.3); font-size:clamp(18px,5vw,22px); flex-shrink:0; margin-left:8px; }
 
-.lc-sub  { font-size: 10.5px; color: rgba(255,255,255,0.5); font-weight: 600; display: block; margin-bottom: 2px; }
-.lc-name { font-size: 15px; font-weight: 800; }
-.lc-chev { color: rgba(255,255,255,0.3); font-size: 20px; }
-
-/* ===== VIDEO SECTION ===== */
+/* VIDEOS */
 .video-scroll {
-  display: flex;
-  gap: 12px;
-  overflow-x: auto;
-  padding-bottom: 8px;
-  scrollbar-width: none;
-  margin-bottom: 4px;
+  display:flex; gap:clamp(8px,2.5vw,14px);
+  overflow-x:auto; padding-bottom:8px;
+  scrollbar-width:none; -webkit-overflow-scrolling:touch;
+  scroll-snap-type:x mandatory;
 }
-.video-scroll::-webkit-scrollbar { display: none; }
-
+.video-scroll::-webkit-scrollbar { display:none; }
 .video-card {
-  flex-shrink: 0;
-  width: 140px;
-  border-radius: 18px;
-  overflow: hidden;
-  background: rgba(255,255,255,0.07);
-  border: 1.5px solid rgba(255,255,255,0.12);
-  cursor: pointer;
-  transition: transform 0.2s;
-  text-decoration: none;
-  color: white;
+  flex-shrink:0; width:clamp(118px,35vw,150px);
+  border-radius:var(--r-md); overflow:hidden;
+  background:rgba(255,255,255,.07); border:1.5px solid rgba(255,255,255,.12);
+  text-decoration:none; color:white;
+  scroll-snap-align:start; transition:transform .2s;
 }
-.video-card:hover { transform: scale(1.04); }
-
+@media (hover:hover) { .video-card:hover { transform:scale(1.04); } }
 .video-thumb {
-  width: 100%;
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  font-size: 40px;
+  width:100%; aspect-ratio:9/14;
+  display:flex; align-items:center; justify-content:center;
+  position:relative; font-size:clamp(28px,9vw,42px);
 }
-.vt-1 { background: linear-gradient(160deg, #FF7A2F55, #FF5BA322); }
-.vt-2 { background: linear-gradient(160deg, #3DDB8544, #5BC8FF22); }
-.vt-3 { background: linear-gradient(160deg, #FFD23444, #FF7A2F22); }
-.vt-4 { background: linear-gradient(160deg, #A855F744, #FF5BA322); }
-
+.vt-1 { background:linear-gradient(160deg,#FF7A2F55,#FF5BA322); }
+.vt-2 { background:linear-gradient(160deg,#3DDB8544,#5BC8FF22); }
+.vt-3 { background:linear-gradient(160deg,#FFD23444,#FF7A2F22); }
+.vt-4 { background:linear-gradient(160deg,#A855F744,#FF5BA322); }
 .play-btn {
-  position: absolute;
-  bottom: 10px; right: 10px;
-  width: 32px; height: 32px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.9);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 14px;
+  position:absolute; bottom:8px; right:8px;
+  width:clamp(24px,7vw,32px); height:clamp(24px,7vw,32px);
+  border-radius:50%; background:rgba(255,255,255,.9);
+  display:flex; align-items:center; justify-content:center;
+  font-size:clamp(10px,3vw,13px); color:#333;
 }
-.video-info { padding: 10px 10px 12px; }
+.video-info { padding:clamp(8px,2.5vw,11px); }
 .video-tag {
-  display: inline-block;
-  font-size: 10px;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 100px;
-  margin-bottom: 5px;
+  display:inline-block; font-size:var(--fs-xs); font-weight:700;
+  padding:2px 8px; border-radius:100px; margin-bottom:4px;
 }
-.vt-tag-1 { background: rgba(255,122,47,0.25); color: var(--orange); }
-.vt-tag-2 { background: rgba(61,219,133,0.25); color: var(--green); }
-.vt-tag-3 { background: rgba(255,210,52,0.25); color: var(--yellow); }
-.vt-tag-4 { background: rgba(168,85,247,0.25); color: var(--purple); }
-.video-title { font-size: 12px; font-weight: 700; line-height: 1.3; }
+.vt-tag-1 { background:rgba(255,122,47,.25); color:var(--orange); }
+.vt-tag-2 { background:rgba(61,219,133,.25); color:var(--green); }
+.vt-tag-3 { background:rgba(255,210,52,.25); color:var(--yellow); }
+.vt-tag-4 { background:rgba(168,85,247,.25); color:var(--purple); }
+.video-title { font-size:var(--fs-xs); font-weight:700; line-height:1.3; }
 
-/* ===== STORES ===== */
+/* STORES */
 .store-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding: 15px 18px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.06);
-  border: 1.5px solid rgba(255,255,255,0.1);
-  margin-bottom: 10px;
-  backdrop-filter: blur(8px);
-  animation: fadeUp 0.5s ease both;
+  display:flex; align-items:flex-start;
+  gap:clamp(10px,3vw,16px);
+  padding:clamp(12px,3.5vw,17px) clamp(14px,4vw,20px);
+  border-radius:var(--r-md);
+  background:rgba(255,255,255,.06); border:1.5px solid rgba(255,255,255,.1);
+  margin-bottom:var(--sp-xs); backdrop-filter:blur(8px); opacity:0;
 }
 .store-num {
-  width: 34px; height: 34px;
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 800; font-size: 15px;
-  flex-shrink: 0;
+  width:clamp(28px,8vw,36px); height:clamp(28px,8vw,36px);
+  border-radius:clamp(8px,2.5vw,11px);
+  display:flex; align-items:center; justify-content:center;
+  font-weight:800; font-size:var(--fs-sm); flex-shrink:0; margin-top:2px;
 }
-.sn1 { background: rgba(255,122,47,0.25); color: var(--orange); }
-.sn2 { background: rgba(61,219,133,0.25); color: var(--green); }
-.sn3 { background: rgba(91,200,255,0.25); color: var(--blue-light); }
-
-.store-info { flex: 1; }
-.store-name { font-size: 14px; font-weight: 800; margin-bottom: 3px; }
-.store-addr { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.5; }
-.store-hours { font-size: 11px; color: var(--green); font-weight: 700; margin-top: 4px; }
+.sn1 { background:rgba(255,122,47,.25); color:var(--orange); }
+.sn2 { background:rgba(61,219,133,.25); color:var(--green); }
+.sn3 { background:rgba(91,200,255,.25); color:var(--blue-light); }
+.store-info { flex:1; min-width:0; }
+.store-name { font-size:var(--fs-base); font-weight:800; margin-bottom:3px; }
+.store-addr { font-size:var(--fs-sm); color:rgba(255,255,255,.55); line-height:1.5; }
+.store-hours { font-size:var(--fs-xs); color:var(--green); font-weight:700; margin-top:4px; }
 .map-btn {
-  display: inline-flex; align-items: center; gap: 4px;
-  margin-top: 7px;
-  font-size: 11px; font-weight: 700;
-  color: var(--orange);
-  background: rgba(255,122,47,0.12);
-  padding: 4px 11px;
-  border-radius: 100px;
-  text-decoration: none;
-  border: 1px solid rgba(255,122,47,0.25);
+  display:inline-flex; align-items:center; gap:4px;
+  margin-top:8px; font-size:var(--fs-xs); font-weight:700;
+  color:var(--orange); background:rgba(255,122,47,.12);
+  padding:5px 12px; border-radius:100px; text-decoration:none;
+  border:1px solid rgba(255,122,47,.25); white-space:nowrap;
 }
 
-/* ===== SOCIALS ===== */
-.social-row { display: flex; gap: 10px; }
+/* SOCIALS */
+.social-row {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:var(--sp-xs);
+}
 .soc-btn {
-  flex: 1;
-  display: flex; flex-direction: column; align-items: center; gap: 7px;
-  padding: 15px 8px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.07);
-  border: 1.5px solid rgba(255,255,255,0.1);
-  text-decoration: none;
-  color: white;
-  transition: transform 0.2s, background 0.2s;
-  cursor: pointer;
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  padding:clamp(12px,3.5vw,16px) 4px;
+  border-radius:var(--r-sm);
+  background:rgba(255,255,255,.07); border:1.5px solid rgba(255,255,255,.1);
+  text-decoration:none; color:white;
+  transition:transform .2s, background .2s; min-height:68px;
 }
-.soc-btn:hover { transform: translateY(-3px); background: rgba(255,255,255,0.12); }
+@media (hover:hover) {
+  .soc-btn:hover { transform:translateY(-3px); background:rgba(255,255,255,.12); }
+}
 .soc-icon {
-  width: 40px; height: 40px;
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px;
+  width:clamp(32px,9vw,42px); height:clamp(32px,9vw,42px);
+  border-radius:clamp(8px,2.5vw,12px);
+  display:flex; align-items:center; justify-content:center;
+  font-size:clamp(15px,4.5vw,21px);
 }
-.s-ig { background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF); }
-.s-wa { background: #25D366; }
-.s-fb { background: #1877F2; }
-.s-yt { background: #FF0000; }
-.soc-lbl { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.7); }
+.s-ig { background:linear-gradient(135deg,#F58529,#DD2A7B,#8134AF); }
+.s-wa { background:#25D366; }
+.s-fb { background:#1877F2; }
+.s-yt { background:#FF0000; }
+.soc-lbl { font-size:var(--fs-xs); font-weight:700; color:rgba(255,255,255,.7); }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 .footer {
-  margin-top: 32px;
-  text-align: center;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  margin-top:var(--sp-lg); text-align:center;
+  padding-top:var(--sp-sm); border-top:1px solid rgba(255,255,255,.08);
 }
-.footer p { font-size: 12px; color: rgba(255,255,255,0.3); font-weight: 600; }
-.footer .heart { color: var(--pink); }
+.footer p { font-size:var(--fs-xs); color:rgba(255,255,255,.3); font-weight:600; line-height:1.7; }
+.heart { color:var(--pink); }
 
-/* ===== WhatsApp Float ===== */
+/* WhatsApp Float */
 .wa-float {
-  position: fixed;
-  bottom: 24px; right: 20px;
-  width: 58px; height: 58px;
-  border-radius: 50%;
-  background: #25D366;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 28px;
-  box-shadow: 0 4px 24px rgba(37,211,102,0.55);
-  z-index: 999;
-  text-decoration: none;
-  animation: waPulse 2.5s infinite;
+  position:fixed;
+  bottom:clamp(16px,5vw,28px); right:clamp(14px,4.5vw,24px);
+  width:clamp(50px,13vw,60px); height:clamp(50px,13vw,60px);
+  border-radius:50%; background:#25D366;
+  display:flex; align-items:center; justify-content:center;
+  font-size:clamp(22px,6vw,28px);
+  box-shadow:0 4px 24px rgba(37,211,102,.55);
+  z-index:999; text-decoration:none;
+  animation:waPulse 2.5s infinite;
 }
 @keyframes waPulse {
-  0%,100% { box-shadow: 0 4px 24px rgba(37,211,102,0.55); }
-  50%      { box-shadow: 0 4px 36px rgba(37,211,102,0.8), 0 0 0 8px rgba(37,211,102,0.12); }
+  0%,100% { box-shadow:0 4px 24px rgba(37,211,102,.55); }
+  50%      { box-shadow:0 4px 36px rgba(37,211,102,.8), 0 0 0 8px rgba(37,211,102,.12); }
 }
 
-/* Animations */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity:0; transform:translateY(18px); }
+  to   { opacity:1; transform:translateY(0); }
 }
 
-.delay-1 { animation-delay: 0.3s; }
-.delay-2 { animation-delay: 0.4s; }
-.delay-3 { animation-delay: 0.5s; }
-.delay-4 { animation-delay: 0.6s; }
-.delay-5 { animation-delay: 0.7s; }
-.delay-6 { animation-delay: 0.8s; }
-.delay-7 { animation-delay: 0.9s; }
+/* Tablet / Desktop */
+@media (min-width:600px) {
+  .stats { gap:14px; }
+  .social-row { gap:12px; }
+  .video-card { width:160px; }
+}
+@media (min-width:768px) {
+  .container { max-width:560px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion:reduce) {
+  *, *::before, *::after { animation-duration:.01ms !important; }
+}
 </style>
 </head>
 <body>
 
-<!-- ===== SKY ===== -->
 <div class="sky">
   <div class="star-field" id="stars"></div>
   <div class="shoot"></div>
   <div class="shoot2"></div>
 
-  <!-- Cloud SVG layers -->
   <div class="cloud-layer back">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" preserveAspectRatio="none" style="width:100%;height:100%;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" preserveAspectRatio="none" style="width:100%;height:100%">
       <g fill="rgba(255,255,255,0.06)">
-        <ellipse cx="150" cy="240" rx="160" ry="50"/>
-        <ellipse cx="120" cy="230" rx="100" ry="40"/>
-        <ellipse cx="180" cy="235" rx="110" ry="38"/>
-        <ellipse cx="500" cy="250" rx="200" ry="55"/>
-        <ellipse cx="460" cy="238" rx="130" ry="44"/>
-        <ellipse cx="540" cy="242" rx="150" ry="42"/>
-        <ellipse cx="900" cy="245" rx="180" ry="52"/>
-        <ellipse cx="860" cy="234" rx="110" ry="40"/>
-        <ellipse cx="940" cy="238" rx="130" ry="40"/>
-        <ellipse cx="1150" cy="255" rx="130" ry="45"/>
+        <ellipse cx="150" cy="240" rx="160" ry="50"/><ellipse cx="120" cy="230" rx="100" ry="40"/>
+        <ellipse cx="180" cy="235" rx="110" ry="38"/><ellipse cx="500" cy="250" rx="200" ry="55"/>
+        <ellipse cx="460" cy="238" rx="130" ry="44"/><ellipse cx="540" cy="242" rx="150" ry="42"/>
+        <ellipse cx="900" cy="245" rx="180" ry="52"/><ellipse cx="860" cy="234" rx="110" ry="40"/>
+        <ellipse cx="940" cy="238" rx="130" ry="40"/><ellipse cx="1150" cy="255" rx="130" ry="45"/>
       </g>
     </svg>
   </div>
 
   <div class="cloud-layer front">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" preserveAspectRatio="none" style="width:100%;height:100%;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" preserveAspectRatio="none" style="width:100%;height:100%">
       <g fill="rgba(255,255,255,0.09)">
-        <ellipse cx="80"  cy="270" rx="130" ry="55"/>
-        <ellipse cx="50"  cy="258" rx="80"  ry="44"/>
-        <ellipse cx="110" cy="262" rx="90"  ry="42"/>
-        <ellipse cx="380" cy="265" rx="160" ry="58"/>
-        <ellipse cx="340" cy="252" rx="100" ry="46"/>
-        <ellipse cx="420" cy="256" rx="120" ry="44"/>
-        <ellipse cx="720" cy="270" rx="190" ry="60"/>
-        <ellipse cx="680" cy="256" rx="120" ry="46"/>
-        <ellipse cx="760" cy="260" rx="140" ry="48"/>
-        <ellipse cx="1050" cy="268" rx="170" ry="56"/>
-        <ellipse cx="1010" cy="256" rx="110" ry="44"/>
-        <ellipse cx="1090" cy="260" rx="130" ry="46"/>
+        <ellipse cx="80"  cy="270" rx="130" ry="55"/><ellipse cx="50"  cy="258" rx="80"  ry="44"/>
+        <ellipse cx="110" cy="262" rx="90"  ry="42"/><ellipse cx="380" cy="265" rx="160" ry="58"/>
+        <ellipse cx="340" cy="252" rx="100" ry="46"/><ellipse cx="420" cy="256" rx="120" ry="44"/>
+        <ellipse cx="720" cy="270" rx="190" ry="60"/><ellipse cx="680" cy="256" rx="120" ry="46"/>
+        <ellipse cx="760" cy="260" rx="140" ry="48"/><ellipse cx="1050" cy="268" rx="170" ry="56"/>
+        <ellipse cx="1010" cy="256" rx="110" ry="44"/><ellipse cx="1090" cy="260" rx="130" ry="46"/>
       </g>
     </svg>
   </div>
 </div>
 
-<!-- ===== PAGE ===== -->
 <div class="container">
 
-  <!-- LOGO -->
   <div class="logo-section">
     <div class="logo-ring">
       <div class="logo-inner">
         <div class="logo-svg-wrap">
-          <!-- Logo SVG recriada nos estilos da marca -->
-          <svg viewBox="0 0 78 78" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 78 78" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
             <circle cx="39" cy="39" r="37" fill="#0D1B3E"/>
-            <!-- K letra principal -->
             <text x="14" y="50" font-family="'Baloo 2',sans-serif" font-size="38" font-weight="800" fill="#FF7A2F">K</text>
-            <!-- estrela decorativa -->
             <polygon points="60,10 62,16 68,16 63,20 65,26 60,22 55,26 57,20 52,16 58,16" fill="#FFD234" opacity="0.9"/>
-            <!-- estrelinhas pequenas -->
             <circle cx="15" cy="18" r="2" fill="#5BC8FF"/>
             <circle cx="68" cy="38" r="1.5" fill="#3DDB85"/>
             <circle cx="10" cy="55" r="1.5" fill="#FF5BA3"/>
-            <!-- nuvenzinha mini -->
             <ellipse cx="55" cy="60" rx="10" ry="5" fill="rgba(255,255,255,0.15)"/>
-            <ellipse cx="50" cy="57" rx="6" ry="4" fill="rgba(255,255,255,0.12)"/>
-            <ellipse cx="60" cy="57" rx="6" ry="4" fill="rgba(255,255,255,0.12)"/>
+            <ellipse cx="50" cy="57" rx="6"  ry="4" fill="rgba(255,255,255,0.12)"/>
+            <ellipse cx="60" cy="57" rx="6"  ry="4" fill="rgba(255,255,255,0.12)"/>
           </svg>
         </div>
       </div>
     </div>
-
     <div class="brand-title">
-      <span class="k1">K</span><span class="k2">a</span><span class="k3">n</span><span class="k4">a</span><span class="k5">n</span><span class="k6">d</span><span class="k2">a</span>
-      &nbsp;
-      <span class="k7">K</span><span class="k8">i</span><span class="k9">d</span><span class="k10">s</span>
+      <span class="k1">K</span><span class="k2">a</span><span class="k3">n</span><span class="k4">a</span><span class="k5">n</span><span class="k6">d</span><span class="k2">a</span>&nbsp;<span class="k7">K</span><span class="k8">i</span><span class="k9">d</span><span class="k10">s</span>
     </div>
     <div class="tagline">✨ Moda Infantil com estilo e qualidade ✨</div>
     <div class="badges-row">
@@ -599,24 +456,13 @@ corpo {​​​
     </div>
   </div>
 
-  <!-- STATS -->
   <div class="stats">
-    <div class="stat">
-      <span class="stat-num col-or">249K</span>
-      <span class="stat-lbl">Seguidores</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num col-ye">3</span>
-      <span class="stat-lbl">Lojas Físicas</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num col-gr">2.2K+</span>
-      <span class="stat-lbl">Publicações</span>
-    </div>
+    <div class="stat"><span class="stat-num col-or">249K</span><span class="stat-lbl">Seguidores</span></div>
+    <div class="stat"><span class="stat-num col-ye">3</span><span class="stat-lbl">Lojas Físicas</span></div>
+    <div class="stat"><span class="stat-num col-gr">2.2K+</span><span class="stat-lbl">Publicações</span></div>
   </div>
 
-  <!-- PRIMARY CTA -->
-  <a class="cta-main" href="https://kanandakids.com.br" target="_blank">
+  <a class="cta-main" href="https://kanandakids.com.br" target="_blank" rel="noopener">
     <div class="cta-icon-wrap">🛍️</div>
     <div class="cta-text">
       <span class="cta-sub">Acesse agora</span>
@@ -625,204 +471,143 @@ corpo {​​​
     <div class="cta-arrow">→</div>
   </a>
 
-  <!-- CATEGORIAS -->
   <div class="section-label">Coleções</div>
 
-  <a class="link-card delay-1" href="https://kanandakids.com.br" target="_blank">
-    <div class="lc-left">
-      <div class="lc-icon ic-pi">👧</div>
-      <div>
-        <span class="lc-sub">Coleção</span>
-        <div class="lc-name">Roupas para Meninas</div>
-      </div>
-    </div>
+  <a class="link-card" href="https://kanandakids.com.br" target="_blank" rel="noopener">
+    <div class="lc-left"><div class="lc-icon ic-pi">👧</div><div><span class="lc-sub">Coleção</span><div class="lc-name">Roupas para Meninas</div></div></div>
+    <div class="lc-chev">›</div>
+  </a>
+  <a class="link-card" href="https://kanandakids.com.br" target="_blank" rel="noopener">
+    <div class="lc-left"><div class="lc-icon ic-bl">👦</div><div><span class="lc-sub">Coleção</span><div class="lc-name">Roupas para Meninos</div></div></div>
+    <div class="lc-chev">›</div>
+  </a>
+  <a class="link-card" href="https://kanandakids.com.br" target="_blank" rel="noopener">
+    <div class="lc-left"><div class="lc-icon ic-ye">👶</div><div><span class="lc-sub">Coleção</span><div class="lc-name">Bebês e Recém-nascidos</div></div></div>
+    <div class="lc-chev">›</div>
+  </a>
+  <a class="link-card" href="https://kanandakids.com.br" target="_blank" rel="noopener">
+    <div class="lc-left"><div class="lc-icon ic-or">🔥</div><div><span class="lc-sub">Destaque</span><div class="lc-name">Promoções e Ofertas</div></div></div>
+    <div class="lc-chev">›</div>
+  </a>
+  <a class="link-card" href="https://kanandakids.com.br" target="_blank" rel="noopener">
+    <div class="lc-left"><div class="lc-icon ic-gr">📦</div><div><span class="lc-sub">Pedidos</span><div class="lc-name">Rastrear meu pedido</div></div></div>
     <div class="lc-chev">›</div>
   </a>
 
-  <a class="link-card delay-2" href="https://kanandakids.com.br" target="_blank">
-    <div class="lc-left">
-      <div class="lc-icon ic-bl">👦</div>
-      <div>
-        <span class="lc-sub">Coleção</span>
-        <div class="lc-name">Roupas para Meninos</div>
-      </div>
-    </div>
-    <div class="lc-chev">›</div>
-  </a>
-
-  <a class="link-card delay-3" href="https://kanandakids.com.br" target="_blank">
-    <div class="lc-left">
-      <div class="lc-icon ic-ye">👶</div>
-      <div>
-        <span class="lc-sub">Coleção</span>
-        <div class="lc-name">Bebês e Recém-nascidos</div>
-      </div>
-    </div>
-    <div class="lc-chev">›</div>
-  </a>
-
-  <a class="link-card delay-4" href="https://kanandakids.com.br" target="_blank">
-    <div class="lc-left">
-      <div class="lc-icon ic-or">🔥</div>
-      <div>
-        <span class="lc-sub">Destaque</span>
-        <div class="lc-name">Promoções e Ofertas</div>
-      </div>
-    </div>
-    <div class="lc-chev">›</div>
-  </a>
-
-  <a class="link-card delay-5" href="https://kanandakids.com.br" target="_blank">
-    <div class="lc-left">
-      <div class="lc-icon ic-gr">📦</div>
-      <div>
-        <span class="lc-sub">Pedidos</span>
-        <div class="lc-name">Rastrear meu pedido</div>
-      </div>
-    </div>
-    <div class="lc-chev">›</div>
-  </a>
-
-  <!-- VÍDEOS -->
   <div class="section-label">Reels &amp; Vídeos</div>
-
   <div class="video-scroll">
-    <a class="video-card" href="https://www.instagram.com/kanandakids/reels/" target="_blank">
-      <div class="video-thumb vt-1">
-        👗
-        <div class="play-btn">▶</div>
-      </div>
-      <div class="video-info">
-        <span class="video-tag vt-tag-1">Novo</span>
-        <div class="video-title">Look do Dia Meninas</div>
-      </div>
+    <a class="video-card" href="https://www.instagram.com/kanandakids/reels/" target="_blank" rel="noopener">
+      <div class="video-thumb vt-1">👗<div class="play-btn">▶</div></div>
+      <div class="video-info"><span class="video-tag vt-tag-1">Novo</span><div class="video-title">Look do Dia Meninas</div></div>
     </a>
-    <a class="video-card" href="https://www.instagram.com/kanandakids/reels/" target="_blank">
-      <div class="video-thumb vt-2">
-        👕
-        <div class="play-btn">▶</div>
-      </div>
-      <div class="video-info">
-        <span class="video-tag vt-tag-2">Verão</span>
-        <div class="video-title">Coleção Meninos 2025</div>
-      </div>
+    <a class="video-card" href="https://www.instagram.com/kanandakids/reels/" target="_blank" rel="noopener">
+      <div class="video-thumb vt-2">👕<div class="play-btn">▶</div></div>
+      <div class="video-info"><span class="video-tag vt-tag-2">Verão</span><div class="video-title">Coleção Meninos 2025</div></div>
     </a>
-    <a class="video-card" href="https://www.instagram.com/kanandakids/reels/" target="_blank">
-      <div class="video-thumb vt-3">
-        🎀
-        <div class="play-btn">▶</div>
-      </div>
-      <div class="video-info">
-        <span class="video-tag vt-tag-3">Bebê</span>
-        <div class="video-title">Enxoval Completo</div>
-      </div>
+    <a class="video-card" href="https://www.instagram.com/kanandakids/reels/" target="_blank" rel="noopener">
+      <div class="video-thumb vt-3">🎀<div class="play-btn">▶</div></div>
+      <div class="video-info"><span class="video-tag vt-tag-3">Bebê</span><div class="video-title">Enxoval Completo</div></div>
     </a>
-    <a class="video-card" href="https://www.instagram.com/kanandakids/reels/" target="_blank">
-      <div class="video-thumb vt-4">
-        ✨
-        <div class="play-btn">▶</div>
-      </div>
-      <div class="video-info">
-        <span class="video-tag vt-tag-4">Festa</span>
-        <div class="video-title">Looks para Festinhas</div>
-      </div>
+    <a class="video-card" href="https://www.instagram.com/kanandakids/reels/" target="_blank" rel="noopener">
+      <div class="video-thumb vt-4">✨<div class="play-btn">▶</div></div>
+      <div class="video-info"><span class="video-tag vt-tag-4">Festa</span><div class="video-title">Looks para Festinhas</div></div>
     </a>
   </div>
 
-  <!-- LOJAS -->
-  <div class="section-label" style="margin-top:22px;">Nossas Lojas</div>
+  <div class="section-label" style="margin-top:var(--sp-md)">Nossas Lojas</div>
 
-  <div class="store-card delay-1">
+  <div class="store-card">
     <div class="store-num sn1">1</div>
     <div class="store-info">
       <div class="store-name">Madureira Shopping</div>
       <div class="store-addr">Estrada do Portela, 222 — Lojas 164/165<br>Madureira, Rio de Janeiro</div>
       <div class="store-hours">☀️ Seg–Sáb: 10h às 22h • Dom: 13h às 21h</div>
-      <a class="map-btn" href="https://maps.google.com/?q=Madureira+Shopping+Rio+de+Janeiro" target="_blank">📍 Ver no mapa</a>
+      <a class="map-btn" href="https://maps.google.com/?q=Madureira+Shopping+Rio+de+Janeiro" target="_blank" rel="noopener">📍 Ver no mapa</a>
     </div>
   </div>
-
-  <div class="store-card delay-2">
+  <div class="store-card">
     <div class="store-num sn2">2</div>
     <div class="store-info">
       <div class="store-name">Loja 2 — Rio de Janeiro</div>
-      <div class="store-addr">Endereço disponível via WhatsApp<br>ou Instagram @kanandakids</div>
-      <a class="map-btn" href="https://wa.me/5521973697447" target="_blank">💬 Falar no WhatsApp</a>
+      <div class="store-addr">Endereço disponível via WhatsApp ou Instagram @kanandakids</div>
+      <a class="map-btn" href="https://wa.me/5521973697447" target="_blank" rel="noopener">💬 Falar no WhatsApp</a>
     </div>
   </div>
-
-  <div class="store-card delay-3">
+  <div class="store-card">
     <div class="store-num sn3">3</div>
     <div class="store-info">
       <div class="store-name">Loja 3 — Rio de Janeiro</div>
-      <div class="store-addr">Endereço disponível via WhatsApp<br>ou Instagram @kanandakids</div>
-      <a class="map-btn" href="https://wa.me/5521973697447" target="_blank">💬 Falar no WhatsApp</a>
+      <div class="store-addr">Endereço disponível via WhatsApp ou Instagram @kanandakids</div>
+      <a class="map-btn" href="https://wa.me/5521973697447" target="_blank" rel="noopener">💬 Falar no WhatsApp</a>
     </div>
   </div>
 
-  <!-- SOCIALS -->
   <div class="section-label">Redes Sociais</div>
   <div class="social-row">
-    <a class="soc-btn" href="https://instagram.com/kanandakids" target="_blank">
-      <div class="soc-icon s-ig">📸</div>
-      <span class="soc-lbl">Instagram</span>
+    <a class="soc-btn" href="https://instagram.com/kanandakids" target="_blank" rel="noopener">
+      <div class="soc-icon s-ig">📸</div><span class="soc-lbl">Instagram</span>
     </a>
-    <a class="soc-btn" href="https://wa.me/5521973697447" target="_blank">
-      <div class="soc-icon s-wa">💬</div>
-      <span class="soc-lbl">WhatsApp</span>
+    <a class="soc-btn" href="https://wa.me/5521973697447" target="_blank" rel="noopener">
+      <div class="soc-icon s-wa">💬</div><span class="soc-lbl">WhatsApp</span>
     </a>
-    <a class="soc-btn" href="https://facebook.com/kidskananda" target="_blank">
-      <div class="soc-icon s-fb">👍</div>
-      <span class="soc-lbl">Facebook</span>
+    <a class="soc-btn" href="https://facebook.com/kidskananda" target="_blank" rel="noopener">
+      <div class="soc-icon s-fb">👍</div><span class="soc-lbl">Facebook</span>
     </a>
-    <a class="soc-btn" href="https://www.instagram.com/kanandakids/reels/" target="_blank">
-      <div class="soc-icon s-yt">▶️</div>
-      <span class="soc-lbl">Reels</span>
+    <a class="soc-btn" href="https://www.instagram.com/kanandakids/reels/" target="_blank" rel="noopener">
+      <div class="soc-icon s-yt">▶️</div><span class="soc-lbl">Reels</span>
     </a>
   </div>
 
-  <!-- FOOTER -->
   <div class="footer">
     <p>Feito com <span class="heart">♥</span> para vestir seus pequenos com estilo</p>
-    <p style="margin-top:4px;">© 2025 Kananda Kids · Rio de Janeiro 🌟</p>
+    <p>© 2025 Kananda Kids · Rio de Janeiro 🌟</p>
   </div>
 
 </div>
 
-<!-- WhatsApp float -->
-<a class="wa-float" href="https://wa.me/5521973697447" target="_blank">💬</a>
+<a class="wa-float" href="https://wa.me/5521973697447" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
 
 <script>
-// Generate stars
-const field = document.getElementById('stars');
-const starData = [
-  // [x%, y%, size, opacity-lo, opacity-hi, duration, delay, scale]
-];
-for (let i = 0; i < 120; i++) {
-  const el = document.createElement('div');
-  el.className = 's';
-  const x = Math.random() * 100;
-  const y = Math.random() * 75;
-  const size = Math.random() < 0.85 ? Math.random() * 2 + 0.5 : Math.random() * 3 + 2;
-  const lo = (Math.random() * 0.3 + 0.1).toFixed(2);
-  const hi = (Math.random() * 0.5 + 0.5).toFixed(2);
-  const dur = (Math.random() * 3 + 2).toFixed(1) + 's';
-  const delay = (Math.random() * 4).toFixed(1) + 's';
-  const sc = (Math.random() * 0.8 + 1.1).toFixed(1);
-  el.style.cssText = `
-    left:${x}%; top:${y}%;
-    width:${size}px; height:${size}px;
-    --lo:${lo}; --hi:${hi}; --d:${dur}; --delay:${delay}; --sc:${sc};
-  `;
-  field.appendChild(el);
-}
+(function(){
+  // Stars
+  const field = document.getElementById('stars');
+  const frag = document.createDocumentFragment();
+  for (let i = 0; i < 120; i++) {
+    const el = document.createElement('div');
+    el.className = 's';
+    const size = Math.random() < 0.85 ? Math.random()*2+0.5 : Math.random()*3+2;
+    el.style.cssText = [
+      'left:'+(Math.random()*100).toFixed(1)+'%',
+      'top:'+(Math.random()*78).toFixed(1)+'%',
+      'width:'+size.toFixed(1)+'px',
+      'height:'+size.toFixed(1)+'px',
+      '--lo:'+(Math.random()*0.3+0.1).toFixed(2),
+      '--hi:'+(Math.random()*0.5+0.5).toFixed(2),
+      '--d:'+(Math.random()*3+2).toFixed(1)+'s',
+      '--delay:'+(Math.random()*4).toFixed(1)+'s',
+      '--sc:'+(Math.random()*0.8+1.1).toFixed(1)
+    ].join(';');
+    frag.appendChild(el);
+  }
+  field.appendChild(frag);
 
-// Staggered card animations
-document.querySelectorAll('.link-card, .store-card').forEach((el, i) => {
-  el.style.animationDelay = (0.25 + i * 0.08) + 's';
-  el.style.opacity = '0';
-  el.style.animation = `fadeUp 0.5s ${(0.25 + i * 0.08).toFixed(2)}s ease forwards`;
-});
+  // Animate cards on scroll
+  const cards = document.querySelectorAll('.link-card, .store-card');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const d = parseFloat(e.target.dataset.delay||0);
+          e.target.style.animation = 'fadeUp 0.45s '+d.toFixed(2)+'s ease forwards';
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    cards.forEach((c, i) => { c.dataset.delay = (0.05 + i*0.06).toFixed(2); io.observe(c); });
+  } else {
+    cards.forEach(c => { c.style.opacity='1'; });
+  }
+})();
 </script>
 </body>
 </html>
